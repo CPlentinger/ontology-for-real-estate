@@ -1,0 +1,1567 @@
+@prefix : <http://example.com#>.
+@prefix gufo: <http://purl.org/nemo/gufo#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://example.com> rdf:type owl:Ontology;
+    owl:imports gufo:.
+:RealEstateListing rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "RealEstateListing"@en.
+:RealEstateAgent rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "RealEstateAgent"@en.
+:RealEstateOffer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "RealEstateOffer"@en.
+:Location rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Location"@en.
+:Address rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Address"@en.
+:Structure rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Structure"@en.
+:Layout rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Layout"@en.
+:Room rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Room"@en.
+:LivingRoom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "LivingRoom"@en.
+:Bedroom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Bedroom"@en.
+:Bathroom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Bathroom"@en.
+:Kitchen rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Kitchen"@en.
+:DiningRoom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "DiningRoom"@en.
+:SurfaceArea rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "SurfaceArea"@en.
+:LandParcel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "LandParcel"@en.
+:CadastralMap_1 rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "CadastralMap"@en.
+:RealEstateProduct rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "RealEstateProduct"@en.
+:ListingSystem rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "ListingSystem"@en.
+:Reference rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Reference"@en.
+:URL rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "URL"@en.
+:CreationDate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "CreationDate"@en.
+:LastModificationDate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "LastModificationDate"@en.
+:Preparation rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Preparation"@en.
+:AwaitingOffers rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "AwaitingOffers"@en.
+:Negotiation rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Negotiation"@en.
+:OfferAccepted rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "OfferAccepted"@en.
+:Draft rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Draft"@en.
+:Published rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Published"@en.
+:Scheduled rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Scheduled"@en.
+:Expired rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Expired"@en.
+:ValidUntilDate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "ValidUntilDate"@en.
+:Title rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Title"@en.
+:ReferenceNumber rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ReferenceNumber"@en.
+:Validity rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "Validity"@en.
+:Description rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Description"@en.
+:ContactDetails rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "ContactDetails"@en.
+:PhoneNumber rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "PhoneNumber"@en.
+:EmailAddress rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "EmailAddress"@en.
+:MailingAddress rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "MailingAddress"@en.
+:PriceHistory rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "PriceHistory"@en.
+:ListingPrice rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "ListingPrice"@en.
+:StartDate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "StartDate"@en.
+:EndDate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "EndDate"@en.
+:PriceValue rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "PriceValue"@en.
+:Currency rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Currency"@en.
+:Visible rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Visible"@en.
+:PriceCurrent rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "PriceCurrent"@en.
+:PublishDate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "PublishDate"@en.
+:ForRentPrice rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ForRentPrice"@en.
+:ForSalePrice rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ForSalePrice"@en.
+:RentalOffer rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "RentalOffer"@en.
+:SalesOffer rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "SalesOffer"@en.
+:PaymentInterval rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "PaymentInterval"@en.
+:RealEstateOwnership rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "RealEstateOwnership"@en.
+:Leasehold rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Leasehold"@en.
+:Condominium rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Condominium"@en.
+:BuildingFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "BuildingFeature"@en.
+:InteriorFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "InteriorFeature"@en.
+:ExteriorFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "ExteriorFeature"@en.
+:RealEstateFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "RealEstateFeature"@en.
+:LandFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "LandFeature"@en.
+:NearbyLocationFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "NearbyLocationFeature"@en.
+:PriceExpired rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "PriceExpired"@en.
+:Yard rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Yard"@en.
+:Garden rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Garden"@en.
+:Orientation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Orientation"@en.
+:Front rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Front"@en.
+:Back rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Back"@en.
+:RoomFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "RoomFeature"@en.
+:Distance rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Distance"@en.
+:QuantitativeDistance rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "QuantitativeDistance"@en.
+:QualitativeDistance rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "QualitativeDistance"@en.
+:Amenity rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Amenity"@en.
+:EnergyEfficiencyRating rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "EnergyEfficiencyRating"@en.
+:EnergyClassRating rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "EnergyClassRating"@en.
+:kWhPerSquareMeter rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "kWhPerSquareMeter"@en.
+:HeatingFacility rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "HeatingFacility"@en.
+:CentralHeatingSystem rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "CentralHeatingSystem"@en.
+:ElectricHeatingSystem rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ElectricHeatingSystem"@en.
+:GasHeatingSystem rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "GasHeatingSystem"@en.
+:OilHeatingSystem rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "OilHeatingSystem"@en.
+:RenewableHeatingFacility rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "RenewableHeatingFacility"@en.
+:HeatPump rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "HeatPump"@en.
+:SolarThermalCollector rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "SolarThermalCollector"@en.
+:BiomassBoiler rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "BiomassBoiler"@en.
+:DistrictHeatingSystem rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "DistrictHeatingSystem"@en.
+:IndividualRoomHeatingFacility rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "IndividualRoomHeatingFacility"@en.
+:RadiantHeatingElement rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "RadiantHeatingElement"@en.
+:Radiator rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Radiator"@en.
+:WoodBurningStove rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "WoodBurningStove"@en.
+:Heater rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Heater"@en.
+:Fireplace rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Fireplace"@en.
+:GasFireplace rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "GasFireplace"@en.
+:ElectricFireplace rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ElectricFireplace"@en.
+:WoodFireplace rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "WoodFireplace"@en.
+:HotWaterTank rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "HotWaterTank"@en.
+:GasBoiler rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "GasBoiler"@en.
+:RadiantFloorHeating rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "RadiantFloorHeating"@en.
+:Area rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Area"@en.
+:UnderConstruction rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "UnderConstruction"@en.
+:NewConstruction rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "NewConstruction"@en.
+:ConstructionStatus rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "ConstructionStatus"@en.
+:FutureDevelopment rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "FutureDevelopment"@en.
+:Refurbished rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Refurbished"@en.
+:Renovated rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Renovated"@en.
+:RenovationRequired rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "RenovationRequired"@en.
+:PartiallyRenovated rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "PartiallyRenovated"@en.
+:PartiallyRefurbished rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "PartiallyRefurbished"@en.
+:Dilapidated rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Dilapidated"@en.
+:PlannedDevelopment rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "PlannedDevelopment"@en.
+:ConstructionScheduled rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ConstructionScheduled"@en.
+:Media rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Media"@en.
+:Video rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Video"@en.
+:Image rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Image"@en.
+:3DRender rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "3D Render"@en.
+:VirtualTour rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Virtual tour"@en.
+:360DegreePhoto rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "360-degree photo"@en.
+:360DegreeVideo rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "360-degree video"@en.
+:AerialVideo rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Aerial Video"@en.
+:CadastralMap rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Cadastral Map"@en.
+:DronePhoto rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Drone photo"@en.
+:Diagram rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Diagram"@en.
+:SitePlan rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Site Plan"@en.
+:FloorPlan rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Floor Plan"@en.
+:Photo rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Photo"@en.
+:SpatialUnit rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "SpatialUnit"@en.
+:GrossArea rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "GrossArea"@en.
+:NetArea rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "NetArea"@en.
+:RealEstateContract rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "RealEstateContract"@en.
+:CommercialStructure rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "CommercialStructure"@en.
+:ResidentialStructure rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "ResidentialStructure"@en.
+:StructureType rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "StructureType"@en.
+:Adjacency rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Adjacency"@en.
+:OneSideAttached rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "OneSideAttached"@en.
+:BothSidesAttached rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "BothSidesAttached"@en.
+:MultiUnitAttached rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "MultiUnitAttached"@en.
+:CornerAttached rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CornerAttached"@en.
+:ConstructionYear rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "ConstructionYear"@en.
+:RoomCount rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "RoomCount"@en.
+:FloorLevel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "FloorLevel"@en.
+:Floor rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Floor"@en.
+:FloorCount rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "FloorCount"@en.
+:Name rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Name"@en.
+:Description2 rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Description2"@en.
+:AgentName rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "AgentName"@en.
+:BusinessName rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "BusinessName"@en.
+:Contact rdf:type owl:Class, gufo:RoleMixin, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Contact"@en.
+:WebsiteURL rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "WebsiteURL"@en.
+:OfficeHours rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "OfficeHours"@en.
+:LivingArea rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "LivingArea"@en.
+:LandSurfaceArea rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "LandSurfaceArea"@en.
+:TotalArea rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "TotalArea"@en.
+:ISO3166CountryCode rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "ISO3166CountryCode"@en.
+:PostalCode rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "PostalCode"@en.
+:GeographicalCoordinates rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "GeographicalCoordinates"@en.
+:Latitude rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Latitude"@en.
+:Longitude rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Longitude"@en.
+:AdministrativeDivision rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "AdministrativeDivision"@en.
+:Order rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Order"@en.
+:FirstOrderAdministrativeDivision rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "FirstOrderAdministrativeDivision"@en.
+:SecondOrderAdministrativeDivision rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "SecondOrderAdministrativeDivision"@en.
+:ThirdOrderAdministrativeDivision rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ThirdOrderAdministrativeDivision"@en.
+:FourthOrderAdministrativeDivision rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "FourthOrderAdministrativeDivision"@en.
+:Name2 rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Name2"@en.
+:OfficialName rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "OfficialName"@en.
+:AlternateName rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "AlternateName"@en.
+:HouseNumber rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "HouseNumber"@en.
+:LocationFeature rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "LocationFeature"@en.
+:Accessibility rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "Accessibility"@en.
+:PrivateAccess rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "PrivateAccess"@en.
+:PublicAccess rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "PublicAccess"@en.
+:CommunalAccess rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CommunalAccess"@en.
+:Orientation2 rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Orientation2"@en.
+:CompassDirection rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CompassDirection"@en.
+:Balcony rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Balcony"@en.
+:AirConditioningUnit rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "AirConditioningUnit"@en.
+:AirConditioning rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "AirConditioning"@en.
+:EnergyEfficiencyCertificate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "EnergyEfficiencyCertificate"@en.
+:IssuanceDate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "IssuanceDate"@en.
+:EnergyEfficiencyStandard rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "EnergyEfficiencyStandard"@en.
+:Driveway rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Driveway"@en.
+:SalesProcess rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "SalesProcess"@en.
+:ShortDescription rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "ShortDescription"@en.
+:Person rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Person"@en.
+:RealEstateAgency rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "RealEstateAgency"@en.
+:Freehold rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Freehold"@en.
+:StreetName rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "StreetName"@en.
+:ElectricityFacility rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:label "ElectricityFacility"@en.
+:SolarPanel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "SolarPanel"@en.
+:PersonContact rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "PersonContact"@en.
+:BusinessContact rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "BusinessContact"@en.
+:Address rdfs:subClassOf :Location.
+:Kitchen rdfs:subClassOf :Room.
+:LivingRoom rdfs:subClassOf :Room.
+:DiningRoom rdfs:subClassOf :Room.
+:Bedroom rdfs:subClassOf :Room.
+:Bathroom rdfs:subClassOf :Room.
+:Draft rdfs:subClassOf :RealEstateListing.
+:Expired rdfs:subClassOf :RealEstateListing.
+:Scheduled rdfs:subClassOf :RealEstateListing.
+:Published rdfs:subClassOf :RealEstateListing.
+:URL rdfs:subClassOf :Reference.
+:ReferenceNumber rdfs:subClassOf :Reference.
+:PriceCurrent rdfs:subClassOf :ListingPrice.
+:ForRentPrice rdfs:subClassOf :ListingPrice.
+:ForSalePrice rdfs:subClassOf :ListingPrice.
+:SalesOffer rdfs:subClassOf :RealEstateOffer.
+:RentalOffer rdfs:subClassOf :RealEstateOffer.
+:Leasehold rdfs:subClassOf :RealEstateOwnership.
+:Condominium rdfs:subClassOf :RealEstateOwnership.
+:InteriorFeature rdfs:subClassOf :BuildingFeature.
+:ExteriorFeature rdfs:subClassOf :BuildingFeature.
+:LandFeature rdfs:subClassOf :RealEstateFeature.
+:BuildingFeature rdfs:subClassOf :RealEstateFeature.
+:NearbyLocationFeature rdfs:subClassOf :RealEstateFeature.
+:PriceExpired rdfs:subClassOf :ListingPrice.
+:Front rdfs:subClassOf :Orientation.
+:Back rdfs:subClassOf :Orientation.
+:RoomFeature rdfs:subClassOf :InteriorFeature.
+:QuantitativeDistance rdfs:subClassOf :Distance.
+:QualitativeDistance rdfs:subClassOf :Distance.
+:Amenity rdfs:subClassOf :Location.
+:GasHeatingSystem rdfs:subClassOf :CentralHeatingSystem.
+:ElectricHeatingSystem rdfs:subClassOf :CentralHeatingSystem.
+:CentralHeatingSystem rdfs:subClassOf :HeatingFacility.
+:OilHeatingSystem rdfs:subClassOf :CentralHeatingSystem.
+:RenewableHeatingFacility rdfs:subClassOf :HeatingFacility.
+:DistrictHeatingSystem rdfs:subClassOf :RenewableHeatingFacility.
+:HeatPump rdfs:subClassOf :RenewableHeatingFacility.
+:SolarThermalCollector rdfs:subClassOf :RenewableHeatingFacility.
+:BiomassBoiler rdfs:subClassOf :RenewableHeatingFacility.
+:HotWaterTank rdfs:subClassOf :RenewableHeatingFacility.
+:GasFireplace rdfs:subClassOf :Fireplace.
+:ElectricFireplace rdfs:subClassOf :Fireplace.
+:WoodFireplace rdfs:subClassOf :Fireplace.
+:RadiantHeatingElement rdfs:subClassOf :IndividualRoomHeatingFacility.
+:Radiator rdfs:subClassOf :IndividualRoomHeatingFacility.
+:RadiantFloorHeating rdfs:subClassOf :RadiantHeatingElement.
+:HeatingFacility rdfs:subClassOf :BuildingFeature.
+:IndividualRoomHeatingFacility rdfs:subClassOf :RoomFeature.
+:Area rdfs:subClassOf :Location.
+:UnderConstruction rdfs:subClassOf :ConstructionStatus.
+:PartiallyRenovated rdfs:subClassOf :Renovated.
+:PartiallyRefurbished rdfs:subClassOf :Refurbished.
+:RenovationRequired rdfs:subClassOf :ConstructionStatus.
+:Refurbished rdfs:subClassOf :ConstructionStatus.
+:Renovated rdfs:subClassOf :ConstructionStatus.
+:NewConstruction rdfs:subClassOf :ConstructionStatus.
+:FutureDevelopment rdfs:subClassOf :ConstructionStatus.
+:Dilapidated rdfs:subClassOf :ConstructionStatus.
+:PlannedDevelopment rdfs:subClassOf :FutureDevelopment.
+:ConstructionScheduled rdfs:subClassOf :FutureDevelopment.
+:Video rdfs:subClassOf :Media.
+:3DRender rdfs:subClassOf :Image.
+:Image rdfs:subClassOf :Media.
+:360DegreeVideo rdfs:subClassOf :Video.
+:VirtualTour rdfs:subClassOf :Media.
+:AerialVideo rdfs:subClassOf :Video.
+:CadastralMap rdfs:subClassOf :Diagram.
+:Diagram rdfs:subClassOf :Image.
+:SitePlan rdfs:subClassOf :Diagram.
+:FloorPlan rdfs:subClassOf :Diagram.
+:360DegreePhoto rdfs:subClassOf :Photo.
+:DronePhoto rdfs:subClassOf :Photo.
+:Photo rdfs:subClassOf :Image.
+:Structure rdfs:subClassOf :SpatialUnit.
+:Room rdfs:subClassOf :SpatialUnit.
+:LandParcel rdfs:subClassOf :SpatialUnit.
+:GrossArea rdfs:subClassOf :SurfaceArea.
+:NetArea rdfs:subClassOf :SurfaceArea.
+:CommercialStructure rdfs:subClassOf :Structure.
+:ResidentialStructure rdfs:subClassOf :Structure.
+:OneSideAttached rdfs:subClassOf :Adjacency.
+:BothSidesAttached rdfs:subClassOf :Adjacency.
+:CornerAttached rdfs:subClassOf :Adjacency.
+:MultiUnitAttached rdfs:subClassOf :Adjacency.
+:Garden rdfs:subClassOf :Yard.
+:FirstOrderAdministrativeDivision rdfs:subClassOf :AdministrativeDivision.
+:SecondOrderAdministrativeDivision rdfs:subClassOf :AdministrativeDivision.
+:ThirdOrderAdministrativeDivision rdfs:subClassOf :AdministrativeDivision.
+:FourthOrderAdministrativeDivision rdfs:subClassOf :AdministrativeDivision.
+:PublicAccess rdfs:subClassOf :Accessibility.
+:CommunalAccess rdfs:subClassOf :Accessibility.
+:PrivateAccess rdfs:subClassOf :Accessibility.
+:AirConditioningUnit rdfs:subClassOf :AirConditioning.
+:Heater rdfs:subClassOf :IndividualRoomHeatingFacility.
+:WoodBurningStove rdfs:subClassOf :IndividualRoomHeatingFacility.
+:Fireplace rdfs:subClassOf :IndividualRoomHeatingFacility.
+:AirConditioning rdfs:subClassOf :BuildingFeature.
+:LocationFeature rdfs:subClassOf :RealEstateFeature.
+:Preparation rdfs:subClassOf :SalesProcess.
+:AwaitingOffers rdfs:subClassOf :SalesProcess.
+:Negotiation rdfs:subClassOf :SalesProcess.
+:OfferAccepted rdfs:subClassOf :SalesProcess.
+:RealEstateAgent rdfs:subClassOf :Person.
+:Freehold rdfs:subClassOf :RealEstateOwnership.
+:SolarPanel rdfs:subClassOf :ElectricityFacility.
+:ElectricityFacility rdfs:subClassOf :BuildingFeature.
+:BusinessContact rdfs:subClassOf :RealEstateAgency.
+:PersonContact rdfs:subClassOf :RealEstateAgent, :Contact.
+:BusinessContact rdfs:subClassOf :Contact.
+:kWhPerSquareMeter rdfs:subClassOf :EnergyClassRating.
+:CompassDirection rdfs:subClassOf :Orientation2.
+:expectedCompletionDate_1 rdfs:domain :UnderConstruction;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "expectedCompletionDate"@en.
+:expectedCompletionDate rdfs:domain :FutureDevelopment;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "expectedCompletionDate"@en.
+:completionDate_1 rdfs:domain :Refurbished;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "completionDate"@en.
+:completionDate rdfs:domain :Renovated;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "completionDate"@en.
+:count_1 rdfs:domain :RoomCount;
+    rdfs:range xsd:int;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "count"@en.
+:count rdfs:domain :FloorCount;
+    rdfs:range xsd:int;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "count"@en.
+:specifies rdf:type owl:ObjectProperty;
+    rdfs:domain :RealEstateListing;
+    rdfs:range :RealEstateOffer;
+    rdfs:label "specifies"@en.
+:creates rdf:type owl:ObjectProperty;
+    rdfs:domain :RealEstateAgent;
+    rdfs:range :RealEstateListing;
+    rdfs:label "creates"@en.
+:locatedOn rdf:type owl:ObjectProperty;
+    rdfs:domain :Structure;
+    rdfs:range :LandParcel;
+    rdfs:label "located on"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:indicates rdf:type owl:ObjectProperty;
+    rdfs:domain :ValidUntilDate;
+    rdfs:range :Validity;
+    rdfs:label "indicates"@en.
+:creationDateHasValidity rdf:type owl:ObjectProperty;
+    rdfs:domain :CreationDate;
+    rdfs:range :Validity.
+:lastModificationDateHasValidity rdf:type owl:ObjectProperty;
+    rdfs:domain :LastModificationDate;
+    rdfs:range :Validity.
+:has_3 rdf:type owl:ObjectProperty;
+    rdfs:domain :RealEstateListing;
+    rdfs:range :PriceHistory;
+    rdfs:label "has"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:hasPrice rdf:type owl:ObjectProperty;
+    rdfs:domain :RentalOffer;
+    rdfs:range :ForRentPrice;
+    rdfs:label "hasPrice"@en.
+:hasPrice_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :SalesOffer;
+    rdfs:range :ForSalePrice;
+    rdfs:label "hasPrice"@en.
+:of rdf:type owl:ObjectProperty;
+    rdfs:domain :RealEstateOwnership;
+    rdfs:range :RealEstateProduct;
+    rdfs:label "of"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:offers_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :SalesOffer;
+    rdfs:range :RealEstateProduct;
+    rdfs:label "offers"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:adjacentTo rdf:type owl:ObjectProperty;
+    rdfs:domain :Yard;
+    rdfs:range :Structure;
+    rdfs:label "adjacentTo"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:connectedTo rdf:type owl:ObjectProperty;
+    rdfs:domain :SolarThermalCollector;
+    rdfs:range :HotWaterTank;
+    rdfs:label "connectedTo"@en.
+:refersTo rdf:type owl:ObjectProperty;
+    rdfs:domain :RealEstateListing;
+    rdfs:range :Contact;
+    rdfs:label "refersTo"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:parentOf rdf:type owl:ObjectProperty;
+    rdfs:domain :AdministrativeDivision;
+    rdfs:range :AdministrativeDivision;
+    rdfs:label "parentOf"@en;
+    rdf:type gufo:ComparativeRelationshipType.
+:has_2 rdf:type owl:ObjectProperty;
+    rdfs:domain :EnergyEfficiencyRating;
+    rdfs:range :Structure;
+    rdfs:label "has"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:has_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :LandParcel;
+    rdfs:range :Driveway;
+    rdfs:label "has"@en.
+:depict rdf:type owl:ObjectProperty;
+    rdfs:domain :Media;
+    rdfs:range :SpatialUnit;
+    rdfs:label "depict"@en.
+:formalisedInto rdf:type owl:ObjectProperty;
+    rdfs:domain :SalesOffer;
+    rdfs:range :RealEstateContract;
+    rdfs:label "formalisedInto"@en;
+    rdf:type gufo:MaterialRelationshipType.
+:contains gufo:isDerivedFrom :Layout.
+:creates gufo:isDerivedFrom :ListingSystem.
+:RealEstateOffer rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf :specifies ];
+  owl:someValuesFrom :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty :specifies;
+  owl:someValuesFrom :RealEstateOffer
+].
+:Structure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Layout
+].
+:Layout rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Structure
+].
+:Room rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Layout
+].
+:Layout rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :Room
+].
+:Structure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :CadastralMap_1
+].
+:Reference rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :CreationDate
+].
+:CreationDate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :LastModificationDate
+].
+:LastModificationDate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Validity
+].
+:Validity rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Title
+].
+:Title rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Description
+].
+:Description rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:Validity rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateOffer
+].
+:RealEstateOffer rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Validity
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ContactDetails
+].
+:ContactDetails rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ListingPrice
+].
+:PriceHistory rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:someValuesFrom :ListingPrice
+].
+:ListingPrice rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PriceHistory
+].
+:StartDate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ListingPrice
+].
+:ListingPrice rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :StartDate
+].
+:EndDate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ListingPrice
+].
+:ListingPrice rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EndDate
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PriceValue
+].
+:PriceValue rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ListingPrice
+].
+:Currency rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ListingPrice
+].
+:ListingPrice rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Currency
+].
+:Visible rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ListingPrice
+].
+:ListingPrice rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Visible
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PublishDate
+].
+:PublishDate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ValidUntilDate
+].
+:ValidUntilDate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:PaymentInterval rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ForRentPrice
+].
+:ForRentPrice rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PaymentInterval
+].
+:SalesOffer rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :RealEstateOwnership
+].
+:RealEstateOwnership rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty :of;
+  owl:someValuesFrom :RealEstateProduct
+].
+:Orientation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Yard
+].
+:Yard rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Orientation
+].
+:Orientation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Structure
+].
+:EnergyClassRating rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EnergyEfficiencyRating
+].
+:ConstructionStatus rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Structure
+].
+:Structure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ConstructionStatus
+].
+:SpatialUnit rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:isComponentOf ];
+  owl:someValuesFrom :SurfaceArea
+].
+:SurfaceArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:isComponentOf;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SpatialUnit
+].
+:RealEstateContract rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:someValuesFrom :RealEstateOwnership
+].
+:RealEstateOwnership rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateContract
+].
+:RealEstateProduct rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateContract
+].
+:RealEstateContract rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :RealEstateProduct
+].
+:Structure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :StructureType
+].
+:StructureType rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Structure
+].
+:Adjacency rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Structure
+].
+:Structure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger;
+  owl:onClass :Adjacency
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ConstructionYear
+].
+:ConstructionYear rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Structure
+].
+:RoomCount rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:someValuesFrom :Structure
+].
+:Structure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :RoomCount
+].
+:Room rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RoomCount
+].
+:RoomCount rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :Room
+].
+:Room rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :FloorLevel
+].
+:FloorLevel rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Room
+].
+:FloorCount rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Structure
+].
+:Structure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :FloorCount
+].
+:FloorCount rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Floor
+].
+:Floor rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :FloorCount
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :FloorLevel
+].
+:FloorLevel rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Floor
+].
+:Name rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateFeature
+].
+:RealEstateFeature rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Name
+].
+:Description2 rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateFeature
+].
+:RealEstateFeature rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Description2
+].
+:ContactDetails rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:someValuesFrom :RealEstateListing
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :ContactDetails
+].
+:AgentName rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ContactDetails
+].
+:ContactDetails rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :AgentName
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PhoneNumber
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EmailAddress
+].
+:MailingAddress rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ContactDetails
+].
+:ContactDetails rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :MailingAddress
+].
+:Contact rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ContactDetails
+].
+:ContactDetails rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Contact
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :BusinessName
+].
+:BusinessName rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ContactDetails
+].
+:WebsiteURL rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ContactDetails
+].
+:ContactDetails rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :OfficeHours
+].
+:OfficeHours rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ContactDetails
+].
+:LivingArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SurfaceArea
+].
+:SurfaceArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :LivingArea
+].
+:LivingArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateProduct
+].
+:RealEstateProduct rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :LivingArea
+].
+:SurfaceArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :LandSurfaceArea
+].
+:LandSurfaceArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SurfaceArea
+].
+:SurfaceArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :TotalArea
+].
+:TotalArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SurfaceArea
+].
+:LandSurfaceArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateProduct
+].
+:RealEstateProduct rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :LandSurfaceArea
+].
+:TotalArea rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateProduct
+].
+:RealEstateProduct rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :TotalArea
+].
+:Address rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateProduct
+].
+:RealEstateProduct rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Address
+].
+:GeographicalCoordinates rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Latitude
+].
+:Latitude rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :GeographicalCoordinates
+].
+:GeographicalCoordinates rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Longitude
+].
+:Longitude rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :GeographicalCoordinates
+].
+:Order rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :AdministrativeDivision
+].
+:AdministrativeDivision rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Order
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ISO3166CountryCode
+].
+:ISO3166CountryCode rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :AdministrativeDivision
+].
+:AdministrativeDivision rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Name2
+].
+:Name2 rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :AdministrativeDivision
+].
+:AdministrativeDivision rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :OfficialName
+].
+:OfficialName rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :AdministrativeDivision
+].
+:AlternateName rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :AdministrativeDivision
+].
+:GeographicalCoordinates rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Location
+].
+:Location rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :GeographicalCoordinates
+].
+:RealEstateFeature rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Accessibility
+].
+:Accessibility rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateFeature
+].
+:SpatialUnit rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Accessibility
+].
+:Accessibility rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SpatialUnit
+].
+:Location rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Name
+].
+:Name rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Location
+].
+:SpatialUnit rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Orientation2
+].
+:Orientation2 rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SpatialUnit
+].
+:EnergyEfficiencyCertificate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:someValuesFrom :Structure
+].
+:EnergyEfficiencyRating rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:someValuesFrom :EnergyEfficiencyCertificate
+].
+:EnergyEfficiencyCertificate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EnergyEfficiencyRating
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :IssuanceDate
+].
+:IssuanceDate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EnergyEfficiencyCertificate
+].
+:EnergyEfficiencyCertificate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EnergyEfficiencyStandard
+].
+:EnergyEfficiencyStandard rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EnergyEfficiencyCertificate
+].
+:SalesProcess rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SalesOffer
+].
+:SalesOffer rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:someValuesFrom :SalesProcess
+].
+:RealEstateContract rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:mediates ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SalesProcess
+].
+:SalesProcess rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:mediates;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateContract
+].
+:RealEstateListing rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ShortDescription
+].
+:ShortDescription rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RealEstateListing
+].
+:HouseNumber rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Address
+].
+:Address rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :HouseNumber
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :StreetName
+].
+:StreetName rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Address
+].
+:Address rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PostalCode
+].
+:PostalCode rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Address
+].
+:Address rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :AdministrativeDivision
+].
+:AdministrativeDivision rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Address
+].
