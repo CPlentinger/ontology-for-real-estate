@@ -1,4 +1,3 @@
 ---
-layout: forward
-target: https://example.com
+redirect_to: "http://example.com"
 ---
