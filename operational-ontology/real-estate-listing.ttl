@@ -6,14 +6,14 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @base <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#> .
 
-<http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#> rdf:type owl:Ontology;
+<http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#> rdf:type owl:Ontology ;
     owl:versionIRI <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#/1.0.0> ;
     owl:versionInfo "1.0.0"@en ;
     dc:creator "Plentinger, Casper" ;
     dc:title "Real Estate Listing Ontology"@en ;
     dc:created "2025-05-16"^^xsd:date ;
     dc:modified "2025-05-16"^^xsd:date ;
-    owl:imports gufo:.
+    owl:imports gufo: .
 :RealEstateListing rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
     rdfs:subClassOf gufo:FunctionalComplex;
     rdfs:label "RealEstateListing"@en.
