@@ -1,3 +1,3 @@
 ---
-redirect_to: "http://example.com"
+redirect_to: "/operational-ontology/real-estate-listing.rdf"
 ---
