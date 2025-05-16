@@ -5,7 +5,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-<https://cplentinger.github.io/ontology-for-real-estate/real-estate-listing> rdf:type owl:Ontology;
+<https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl> rdf:type owl:Ontology;
     owl:imports gufo:.
 :RealEstateListing rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
     rdfs:subClassOf gufo:FunctionalComplex;
