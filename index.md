@@ -1,3 +1,3 @@
 ---
-redirect_to: "/operational-ontology/real-estate-listing.rdf"
+redirect_to: "/operational-ontology/real-estate-listing.ttl"
 ---
