@@ -1,13 +1,13 @@
-@prefix : <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#>.
+@prefix : <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#>.
 @prefix gufo: <http://purl.org/nemo/gufo#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@base <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#> .
+@base <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#> .
 
-<http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#> rdf:type owl:Ontology ;
-    owl:versionIRI <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#/1.0.0> ;
+<http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#> rdf:type owl:Ontology ;
+    owl:versionIRI <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#/1.0.0> ;
     owl:versionInfo "1.0.0"@en ;
     dc:creator "Plentinger, Casper" ;
     dc:title "Real Estate Listing Ontology"@en ;
