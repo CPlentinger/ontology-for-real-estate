@@ -1,0 +1,429 @@
+base: http://example.com/#
+
+prefixes:
+  ex: http://example.com/#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  re: http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#
+  gufo: http://purl.org/nemo/gufo#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  owl: http://www.w3.org/2002/07/owl#
+
+mappings:
+  ContactDetails:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:ContactDetailsNewWindsRealty
+    po:
+      - p: rdf:type
+        o: re:ContactDetails
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateListing
+  AgentName:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:AgentNameNewWindsRealty
+    po:
+      - p: rdf:type
+        o: re:AgentName
+      - p: gufo:hasQualityValue
+        o: "New Winds Realty"
+      - p: gufo:inheresIn
+        o:
+          mapping: ContactDetails
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  Ontology:
+    sources:
+      - [ newwindsrealty.xml~xpath, / ]
+    s: <>
+    po:
+      - p: rdf:type
+        o: owl:Ontology
+      - p: owl:imports
+        o:
+          value: 're:'
+          type: iri
+  RealEstateListing:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:RealEstateListing$(id)
+    po:
+      - p: rdf:type
+        o: re:RealEstateListing
+  ReferenceNumber:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:ReferenceNumber$(id)
+    po:
+      - p: rdf:type
+        o: re:ReferenceNumber
+      - p: gufo:hasQualityValue
+        o:
+          value: $(id)
+          datatype: xsd:int
+      - p: gufo:inheresIn
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  RealEstateProduct:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:RealEstateProduct$(id)
+    po:
+      - p: rdf:type
+        o: re:RealEstateProduct
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  RealEstateOwnership:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:RealEstateOwnership$(id)
+    po:
+      - p: rdf:type
+        o: re:Freehold~iri
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  RealEstateContract:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:RealEstateContract$(id)
+    po:
+      - p: rdf:type
+        o: re:RealEstateContract
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateOwnership
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  SalesOffer:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property ]
+    s: ex:SalesOffer$(id)
+    po:
+      - p: rdf:type
+        o: re:SalesOffer
+      - p: re:formalisedInto
+        o:
+          mapping: RealEstateContract
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: re:offers
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  StructureHomeForSale:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/type ]
+    s: ex:Structure$(./../id)-0
+    condition:
+      function: idlab-fn:equal
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:valueParameter2, "Homes for sale" ]
+    po:
+      - p: rdf:type
+        o: re:Structure
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(id), o ]
+      - p: re:locatedOn
+        o:
+          mapping: LandParcelByType
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../id), o ]
+      - p: re:locatedOn
+        o:
+          mapping: LandParcelBySetLotSize
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../../id), o ]
+  StructureCommercialForSale:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/type ]
+    s: ex:Structure$(./../id)-0
+    condition:
+        function: idlab-fn:equal
+        parameters:
+            - [ grel:valueParameter, $(.) ]
+            - [ grel:valueParameter2, "Commercial properties for sale" ]
+    po:
+      - p: rdf:type
+        o: re:Structure
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(id), o ]
+      - p: re:locatedOn
+        o:
+          mapping: LandParcelByType
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../id), o ]
+      - p: re:locatedOn
+        o:
+          mapping: LandParcelBySetLotSize
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../../id), o ]
+  LandParcelByType:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/type ]
+    s: ex:LandParcel$(./../id)-0
+    condition:
+      function: idlab-fn:equal
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:valueParameter2, "Lots" ]
+    po:
+      - p: rdf:type
+        o: re:LandParcel
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(id), o ]
+  LandParcelBySetLotSize:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/attributes/lot_size ]
+    s: ex:LandParcel$(./../../id)-0
+    condition:
+      function: grel:boolean_not
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:equal
+            parameters:
+              - [ grel:valueParameter, "$(.)" ]
+              - [ grel:valueParameter2, "" ]
+    po:
+      - p: rdf:type
+        o: re:LandParcel
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+  Location:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/location ]
+    s: ex:Location$(./../id)-0
+    po:
+      - p: rdf:type
+        o: re:Location
+      - p: gufo:isComponentOf
+        o:
+          mapping: StructureHomeForSale
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: StructureCommercialForSale
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcelByType
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcelBySetLotSize
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../../id), o ]
+  Address:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/location/address ]
+    s: ex:Address$(./../../id)-0
+    condition:
+      function: grel:boolean_not
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:equal
+            parameters:
+              - [ grel:valueParameter, "$(.)" ]
+              - [ grel:valueParameter2, "" ]
+    po:
+      - p: rdf:type
+        o: re:Address
+      - p: gufo:inheresIn
+        o:
+          mapping: Location
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(./../id), o ]
+  TotalArea:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/attributes/lot_size ]
+    s: ex:TotalArea$(./../../id)
+    condition:
+      function: grel:boolean_not
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:equal
+            parameters:
+              - [ grel:valueParameter, "$(.)" ]
+              - [ grel:valueParameter2, "" ]
+    po:
+      - p: rdf:type
+        o: re:TotalArea
+      - p: gufo:inheresIn
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:hasQualityValue
+        o:
+          value: $(.)
+          datatype: xsd:float
+  RealEstateFeature:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/features/feature ]
+    s: ex:RealEstateFeature-$(.)
+    po:
+      - p: rdf:type
+        o: re:RealEstateFeature
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+  FeatureName:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/features/feature ]
+    s: ex:FeatureName-$(.)
+    po:
+      - p: rdf:type
+        o: re:FeatureName
+      - p: gufo:hasQualityValue
+        o:
+          value: $(.)
+          datatype: xsd:string
+      - p: gufo:inheresIn
+        o:
+          mapping: RealEstateFeature
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(.), s ]
+              - [ str2, $(.), o ]
+  Image:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/images/main_image ]
+      - [ newwindsrealty.xml~xpath, /properties/property/images/image ]
+    s: ex:Image-$(.)
+    po:
+      - p: rdf:type
+        o: re:Image
+      - p: gufo:componentOf
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+  MediaURL:
+    sources:
+      - [ newwindsrealty.xml~xpath, /properties/property/images/main_image ]
+      - [ newwindsrealty.xml~xpath, /properties/property/images/image ]
+    s: ex:MediaURL-$(.)
+    po:
+      - p: rdf:type
+        o: re:MediaURL
+      - p: gufo:hasQualityValue
+        o:
+          value: $(.)
+          datatype: xsd:anyURI
+      - p: gufo:inheresIn
+        o:
+          mapping: Image
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(.), s ]
+              - [ str2, $(.), o ]

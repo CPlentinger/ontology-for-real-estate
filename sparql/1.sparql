@@ -1,0 +1,13 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX re:  <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#>
+PREFIX gufo: <http://purl.org/nemo/gufo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?listing ?referenceValue
+WHERE {
+    ?listing rdf:type re:RealEstateListing .
+
+    ?reference rdf:type/rdfs:subClassOf* re:Reference ;
+        gufo:inheresIn ?listing ;
+        gufo:hasQualityValue ?referenceValue .
+}

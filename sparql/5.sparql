@@ -1,0 +1,24 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX re: <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#>
+PREFIX gufo: <http://purl.org/nemo/gufo#>
+
+SELECT ?listing ?featureNameValue
+WHERE {
+    ?listing rdf:type re:RealEstateListing .
+
+    ?product rdf:type re:RealEstateProduct ;
+        gufo:isComponentOf ?listing .
+
+    ?feature rdf:type re:NearbyLocationFeature ;
+        gufo:isComponentOf ?product .
+
+    ?featureName rdf:type re:FeatureName ;
+        gufo:inheresIn ?feature ;
+        gufo:hasQualityValue ?featureNameValue .
+
+    filter regex(
+               ?featureNameValue,
+               "\\b((super)?market|shop|store|mall|retail outlet|boutique)s?\\b",
+               "i"
+           )
+}

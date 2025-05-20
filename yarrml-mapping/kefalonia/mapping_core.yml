@@ -1,0 +1,807 @@
+base: http://example.com/#
+
+prefixes:
+  ex: http://example.com/#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  re: http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#
+  gufo: http://purl.org/nemo/gufo#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: https://w3id.org/imec/idlab/function#
+  owl: http://www.w3.org/2002/07/owl#
+
+functions:
+  random:
+    function: grel:random
+
+mappings:
+  ContactDetails:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:ContactDetailsKefalonia
+    po:
+      - p: rdf:type
+        o: re:ContactDetails
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateListing
+  AgentName:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:AgentNameKefaloniaProperty
+    po:
+      - p: rdf:type
+        o: re:AgentName
+      - p: gufo:hasQualityValue
+        o: "Kefalonia Property"
+      - p: gufo:inheresIn
+        o:
+          mapping: ContactDetails
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  Ontology:
+    sources:
+      - [ kefalonia.xml~xpath, / ]
+    s: <>
+    po:
+      - p: rdf:type
+        o: owl:Ontology
+      - p: owl:imports
+        o:
+          value: 're:'
+          type: iri
+  RealEstateListing:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:RealEstateListing$(id)
+    po:
+      - p: rdf:type
+        o: re:RealEstateListing
+  ReferenceNumber:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:ReferenceNumber$(id)
+    po:
+      - p: rdf:type
+        o: re:ReferenceNumber
+      - p: gufo:hasQualityValue
+        o:
+          value: $(id)
+          datatype: xsd:int
+      - p: gufo:inheresIn
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  RealEstateProduct:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:RealEstateProduct$(id)
+    po:
+      - p: rdf:type
+        o: re:RealEstateProduct
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  RealEstateOwnership:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:RealEstateOwnership$(id)
+    po:
+      - p: rdf:type
+        o: re:PartialOwnership~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, "$(part_ownership)" ]
+            - [ grel:valueParameter2, "1" ]
+      - p: rdf:type
+        o: re:Leasehold~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [ grel:valueParameter, "$(leasehold)" ]
+            - [ grel:valueParameter2, "1" ]
+      - p: rdf:type
+        o: re:Freehold~iri
+        condition:
+          function: grel:boolean_and
+          parameters:
+            - parameter: grel:param_rep_b
+              value:
+                function: idlab-fn:equal
+                parameters:
+                  - [ grel:valueParameter, "$(part_ownership)" ]
+                  - [ grel:valueParameter2, "0" ]
+            - parameter: grel:param_rep_b
+              value:
+                function: idlab-fn:equal
+                parameters:
+                  - [ grel:valueParameter, "$(leasehold)" ]
+                  - [ grel:valueParameter2, "0" ]
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  RealEstateContract:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:RealEstateContract$(id)
+    po:
+      - p: rdf:type
+        o: re:RealEstateContract
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateOwnership
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  SalesOffer:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:SalesOffer$(id)
+    po:
+      - p: rdf:type
+        o: re:SalesOffer
+      - p: re:formalisedInto
+        o:
+          mapping: RealEstateContract
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  Structure:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:Structure$(id)-0
+    condition:
+      function: idlab-fn:equal
+      parameters:
+        - [ grel:valueParameter, $(type) ]
+        - [ grel:valueParameter2, "houses" ]
+    po:
+      - p: rdf:type
+        o: re:Structure
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: re:locatedOn
+        o:
+          mapping: LandParcel
+          condition:
+              function: equal
+              parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: re:locatedOn
+        o:
+          mapping: LandParcelByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(./../../id), o ]
+  LandParcel:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/surface_area/plot ]
+    s: ex:LandParcel$(./../../id)-0
+    po:
+      - p: rdf:type
+        o: re:LandParcel
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+  Location:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:Location$(id)-0
+    po:
+      - p: rdf:type
+        o: re:Location
+      - p: gufo:isComponentOf
+        o:
+          mapping: Structure
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: StructureByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(./../../id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcel
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(./../../id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcelByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(./../../id), o ]
+  Address:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:Address$(id)-0
+    po:
+      - p: rdf:type
+        o: re:Address
+      - p: gufo:inheresIn
+        o:
+          mapping: Location
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  AdminDivCountry:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:AdminDivCountry$(country)
+    po:
+      - p: rdf:type
+        o: re:FirstOrderAdministrativeDivision
+      - p: gufo:isComponentOf
+        o:
+          mapping: Location
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(country), s ]
+              - [ str2, $(country), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: Address
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(country), s ]
+              - [ str2, $(country), o ]
+  AdminDivCountryOrder:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:AdminDivCountryOrder$(country)
+    po:
+      - p: rdf:type
+        o: re:Order
+      - p: gufo:inheresIn
+        o:
+          mapping: AdminDivCountry
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(country), s ]
+              - [ str2, $(country), o ]
+      - p: gufo:hasQualityValue
+        o:
+          value: "0"
+          datatype: xsd:int
+  AdminDivCountryName:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:AdminDivCountryName$(country)
+    po:
+      - p: rdf:type
+        o: re:OfficialName
+      - p: gufo:inheresIn
+        o:
+          mapping: AdminDivCountry
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(country), s ]
+              - [ str2, $(country), o ]
+      - p: gufo:hasQualityValue
+        o:
+          value: $(country)
+          datatype: xsd:string
+  GrossLivingArea:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:GrossLivingArea$(id)
+    condition:
+      function: grel:boolean_not
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:equal
+            parameters:
+              - [ grel:valueParameter, "$(./surface_area/built)" ]
+              - [ grel:valueParameter2, "" ]
+    po:
+      - p: rdf:type
+        o: re:GrossLivingArea
+      - p: gufo:inheresIn
+        o:
+          mapping: RealEstateProduct
+          condition:
+              function: equal
+              parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:hasQualityValue
+        o:
+          value: $(./surface_area/built)
+          datatype: xsd:float
+  TotalArea:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:TotalArea$(id)
+    condition:
+      function: grel:boolean_not
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:equal
+            parameters:
+              - [ grel:valueParameter, "$(./surface_area/plot)" ]
+              - [ grel:valueParameter2, "" ]
+    po:
+      - p: rdf:type
+        o: re:TotalArea
+      - p: gufo:inheresIn
+        o:
+          mapping: RealEstateProduct
+          condition:
+              function: equal
+              parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:hasQualityValue
+        o:
+          value: $(./surface_area/plot)
+          datatype: xsd:float
+  LandParcelByYard:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:LandParcel$(./../../id)-0
+    condition:
+      function: grel:string_contains
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:string_sub, "yard" ]
+    po:
+      - p: rdf:type
+        o: re:LandParcel
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+        condition:
+          function: grel:boolean_not
+          parameters:
+            - parameter: grel:bool_b
+              value:
+                function: idlab-fn:equal
+                parameters:
+                  - [ grel:valueParameter, $(./../../surface_area/plot) ]
+                  - [ grel:valueParameter2, "" ]
+  StructureByYard:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:Structure$(./../../id)-0
+    condition:
+      function: grel:string_contains
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:string_sub, "yard" ]
+    po:
+      - p: rdf:type
+        o: re:Structure
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+  FrontYard:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:Yard$(./../../id)-front-yard
+    condition:
+      function: grel:string_contains
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:string_sub, "front yard" ]
+    po:
+      - p: rdf:type
+        o: re:Yard
+      - p: re:adjacentTo
+        o:
+          mapping: Structure
+          condition:
+              function: equal
+              parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+      - p: re:adjacentTo
+        o:
+          mapping: StructureByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(./../../id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcel
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcelByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(./../../id), o ]
+  FrontYardOrientation:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:YardOrientation$(./../../id)-front
+    condition:
+      function: grel:string_contains
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:string_sub, "front yard" ]
+    po:
+        - p: rdf:type
+          o: re:YardOrientation
+        - p: gufo:hasQualityValue
+          o:
+            value: "front"
+            datatype: xsd:string
+        - p: gufo:inheresIn
+          o:
+            mapping: FrontYard
+            condition:
+              function: equal
+              parameters:
+                - [ str1, $(./../../id), s ]
+                - [ str2, $(./../../id), o ]
+  BackYard:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:Yard$(./../../id)-back-yard
+    condition:
+      function: grel:string_contains
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:string_sub, "back yard" ]
+    po:
+      - p: rdf:type
+        o: re:Yard
+      - p: re:adjacentTo
+        o:
+          mapping: Structure
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+      - p: re:adjacentTo
+        o:
+          mapping: StructureByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(./../../id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcel
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: LandParcelByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(./../../id), o ]
+  BackYardOrientation:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:YardOrientation$(./../../id)-back
+    condition:
+      function: grel:string_contains
+      parameters:
+        - [ grel:valueParameter, $(.) ]
+        - [ grel:string_sub, "back yard" ]
+    po:
+      - p: rdf:type
+        o: re:YardOrientation
+      - p: gufo:hasQualityValue
+        o:
+          value: "back"
+          datatype: xsd:string
+      - p: gufo:inheresIn
+        o:
+          mapping: BackYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(./../../id), o ]
+  RealEstateFeature:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:RealEstateFeature-$(.)
+    po:
+      - p: rdf:type
+        o: re:RealEstateFeature
+      - p: rdf:type
+        o: re:NearbyLocationFeature~iri
+        condition:
+          function: grel:boolean_or
+          parameters:
+            - parameter: grel:param_rep_b
+              value:
+                function: grel:string_contains
+                parameters:
+                  - [ grel:valueParameter, $(.) ]
+                  - [ grel:string_sub, "nearby" ]
+            - parameter: grel:param_rep_b
+              value:
+                function: grel:string_contains
+                parameters:
+                  - [ grel:valueParameter, $(.) ]
+                  - [ grel:string_sub, "close to" ]
+      - p: rdf:type
+        o: re:AirConditioning~iri
+        condition:
+          function: grel:boolean_or
+          parameters:
+              - parameter: grel:param_rep_b
+                value:
+                    function: grel:string_contains
+                    parameters:
+                    - [ grel:valueParameter, $(.) ]
+                    - [ grel:string_sub, "air con" ]
+              - parameter: grel:param_rep_b
+                value:
+                  function: grel:string_contains
+                  parameters:
+                    - [ grel:valueParameter, $(.) ]
+                    - [ grel:string_sub, "aircon" ]
+              - parameter: grel:param_rep_b
+                value:
+                    function: grel:string_contains
+                    parameters:
+                    - [ grel:valueParameter, $(.) ]
+                    - [ grel:string_sub, "a/c" ]
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateProduct
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+  FeatureName:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/features/feature ]
+    s: ex:FeatureName-$(.)
+    po:
+      - p: rdf:type
+        o: re:FeatureName
+      - p: gufo:hasQualityValue
+        o:
+          value: $(.)
+          datatype: xsd:string
+      - p: gufo:inheresIn
+        o:
+          mapping: RealEstateFeature
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(.), s ]
+              - [ str2, $(.), o ]
+  Image:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/images/image ]
+    s: ex:Image-$(url)
+    po:
+      - p: rdf:type
+        o: re:Image
+      - p: gufo:isComponentOf
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../../id), s ]
+              - [ str2, $(id), o ]
+  MediaURL:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/images/image/url ]
+    s: ex:URL-$(.)
+    po:
+      - p: rdf:type
+        o: re:URL
+      - p: gufo:hasQualityValue
+        o:
+          function: grel:string_trim
+          parameters:
+              - [ grel:valueParameter, $(.) ]
+          datatype: xsd:anyURI
+      - p: gufo:inheresIn
+        o:
+          mapping: Image
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(.), s ]
+              - [ str2, $(url), o ]
+  BedroomCount:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:BedroomCount$(id)
+    condition:
+      function: grel:boolean_not
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:equal
+            parameters:
+              - [ grel:valueParameter, $(beds) ]
+              - [ grel:valueParameter2, "" ]
+    po:
+      - p: rdf:type
+        o: re:RoomCount
+      - p: re:roomCount
+        o:
+          value: $(beds)
+          datatype: xsd:int
+      - p: gufo:mediates
+        o:
+          mapping: Structure
+          condition:
+              function: equal
+              parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+      - p: gufo:mediates
+        o:
+          mapping: StructureByYard
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  BedroomType:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property ]
+    s: ex:BedroomType
+    condition:
+      function: grel:boolean_not
+      parameters:
+        - parameter: grel:bool_b
+          value:
+            function: idlab-fn:equal
+            parameters:
+              - [ grel:valueParameter, $(beds) ]
+              - [ grel:valueParameter2, "" ]
+    po:
+      - p: rdf:type
+        o: re:Bedroom
+      - p: gufo:inheresIn
+        o:
+          mapping: BedroomCount
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(id), s ]
+              - [ str2, $(id), o ]
+  ListingPrice:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/price ]
+    s: ex:ListingPrice$(./../id)
+    po:
+      - p: rdf:type
+        o: re:ListingPrice
+      - p: gufo:mediates
+        o:
+          mapping: RealEstateListing
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(id), o ]
+  ListingPriceValue:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/price ]
+    s: ex:ListingPriceValue$(./../id)
+    po:
+      - p: rdf:type
+        o: re:Value
+      - p: gufo:hasQualityValue
+        o:
+          value: $(.)
+          datatype: xsd:float
+      - p: gufo:inheresIn
+        o:
+          mapping: ListingPrice
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../id), o ]
+  ListingPriceCurrency:
+    sources:
+      - [ kefalonia.xml~xpath, /root/property/currency ]
+    s: ex:ListingPriceCurrency$(./../id)
+    po:
+      - p: rdf:type
+        o: re:Currency
+      - p: gufo:hasQualityValue
+        o:
+          value: $(.)
+          datatype: xsd:string
+      - p: gufo:inheresIn
+        o:
+          mapping: ListingPrice
+          condition:
+            function: equal
+            parameters:
+              - [ str1, $(./../id), s ]
+              - [ str2, $(./../id), o ]

@@ -1,0 +1,24 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX re:  <http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#>
+PREFIX gufo: <http://purl.org/nemo/gufo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?listing ?featureNameValue
+WHERE {
+    ?listing rdf:type re:RealEstateListing .
+
+    ?product rdf:type re:RealEstateProduct ;
+        gufo:isComponentOf ?listing .
+
+    VALUES ?featureType { re:RealEstateFeature re:InteriorFeature }
+
+    ?feature rdf:type ?featureType ;
+        gufo:isComponentOf ?product .
+
+    ?featureName rdf:type re:FeatureName ;
+        gufo:inheresIn ?feature;
+        gufo:hasQualityValue ?featureNameValue .
+
+    filter regex(?featureNameValue, "\\b(closet|wardrobe|pantry|stor(age|e)|utility room|attic)\\b", "i")
+}
