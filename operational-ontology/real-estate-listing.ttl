@@ -615,16 +615,16 @@
     rdf:type owl:DatatypeProperty;
     rdfs:subPropertyOf gufo:hasQualityValue;
     rdfs:label "completionDate"@en.
-:count_1 rdfs:domain :RoomCount;
+:roomCount rdfs:domain :RoomCount;
     rdfs:range xsd:int;
     rdf:type owl:DatatypeProperty;
     rdfs:subPropertyOf gufo:hasQualityValue;
-    rdfs:label "count"@en.
-:count rdfs:domain :FloorCount;
+    rdfs:label "roomCount"@en.
+:floorCount rdfs:domain :FloorCount;
     rdfs:range xsd:int;
     rdf:type owl:DatatypeProperty;
     rdfs:subPropertyOf gufo:hasQualityValue;
-    rdfs:label "count"@en.
+    rdfs:label "floorCount"@en.
 :specifies rdf:type owl:ObjectProperty;
     rdfs:domain :RealEstateListing;
     rdfs:range :RealEstateOffer;

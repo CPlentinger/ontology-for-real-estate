@@ -217,28 +217,6 @@
     
 
 
-    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#count -->
-
-    <owl:DatatypeProperty rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#count">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#hasQualityValue"/>
-        <rdfs:domain rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#FloorCount"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:label xml:lang="en">count</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#count_1 -->
-
-    <owl:DatatypeProperty rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#count_1">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#hasQualityValue"/>
-        <rdfs:domain rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomCount"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:label xml:lang="en">count</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#expectedCompletionDate -->
 
     <owl:DatatypeProperty rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#expectedCompletionDate">
@@ -255,6 +233,28 @@
         <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#hasQualityValue"/>
         <rdfs:domain rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#UnderConstruction"/>
         <rdfs:label xml:lang="en">expectedCompletionDate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#floorCount -->
+
+    <owl:DatatypeProperty rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#floorCount">
+        <rdfs:subPropertyOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#roomCount"/>
+        <rdfs:domain rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#FloorCount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">floorCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#roomCount -->
+
+    <owl:DatatypeProperty rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#roomCount">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#hasQualityValue"/>
+        <rdfs:domain rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomCount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">roomCount</rdfs:label>
     </owl:DatatypeProperty>
     
 
