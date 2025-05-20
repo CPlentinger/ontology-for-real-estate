@@ -28,16 +28,6 @@
     rdfs:label "Layout"@en.
 :Room rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
     rdfs:label "Room"@en.
-:LivingRoom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
-    rdfs:label "LivingRoom"@en.
-:Bedroom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
-    rdfs:label "Bedroom"@en.
-:Bathroom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
-    rdfs:label "Bathroom"@en.
-:Kitchen rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
-    rdfs:label "Kitchen"@en.
-:DiningRoom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
-    rdfs:label "DiningRoom"@en.
 :SurfaceArea rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
     rdfs:subClassOf gufo:Quality;
     rdfs:label "SurfaceArea"@en.
@@ -450,9 +440,6 @@
     rdfs:label "Value"@en.
 :PartialOwnership rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
     rdfs:label "PartialOwnership"@en.
-:DivisionName rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
-    rdfs:subClassOf gufo:Quality;
-    rdfs:label "DivisionName"@en.
 :NetLivingArea rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
     rdfs:label "NetLivingArea"@en.
 :GrossLivingArea rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
@@ -483,11 +470,19 @@
 :MarketValue rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
     rdfs:subClassOf gufo:Quality;
     rdfs:label "MarketValue"@en.
-:Kitchen rdfs:subClassOf :Room.
-:LivingRoom rdfs:subClassOf :Room.
-:DiningRoom rdfs:subClassOf :Room.
-:Bedroom rdfs:subClassOf :Room.
-:Bathroom rdfs:subClassOf :Room.
+:RoomType rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "RoomType"@en.
+:DiningRoom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "DiningRoom"@en.
+:LivingRoom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "LivingRoom"@en.
+:Kitchen rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Kitchen"@en.
+:Bedroom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Bedroom"@en.
+:Bathroom rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Bathroom"@en.
 :Draft rdfs:subClassOf :RealEstateListing.
 :Expired rdfs:subClassOf :RealEstateListing.
 :Scheduled rdfs:subClassOf :RealEstateListing.
@@ -599,6 +594,11 @@
 :InformationalDocument rdfs:subClassOf :Document.
 :TechnicalDocument rdfs:subClassOf :Document.
 :LegalDocument rdfs:subClassOf :Document.
+:DiningRoom rdfs:subClassOf :RoomType.
+:LivingRoom rdfs:subClassOf :RoomType.
+:Kitchen rdfs:subClassOf :RoomType.
+:Bedroom rdfs:subClassOf :RoomType.
+:Bathroom rdfs:subClassOf :RoomType.
 :expectedCompletionDate_1 rdfs:domain :UnderConstruction;
     rdf:type owl:DatatypeProperty;
     rdfs:subPropertyOf gufo:hasQualityValue;
@@ -1461,4 +1461,16 @@
   owl:onProperty gufo:inheresIn;
   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
   owl:onClass :RealEstateProduct
+].
+:Room rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RoomType
+].
+:RoomCount rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RoomType
 ].

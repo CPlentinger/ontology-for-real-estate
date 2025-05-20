@@ -489,7 +489,7 @@
     <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Bathroom -->
 
     <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Bathroom">
-        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Room"/>
+        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType"/>
     </owl:Class>
     
 
@@ -497,7 +497,7 @@
     <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Bedroom -->
 
     <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Bedroom">
-        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Room"/>
+        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType"/>
     </owl:Class>
     
 
@@ -790,7 +790,7 @@
     <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DiningRoom -->
 
     <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DiningRoom">
-        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Room"/>
+        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType"/>
     </owl:Class>
     
 
@@ -807,14 +807,6 @@
 
     <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DistrictHeatingSystem">
         <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RenewableHeatingFacility"/>
-    </owl:Class>
-    
-
-
-    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DivisionName -->
-
-    <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DivisionName">
-        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Quality"/>
     </owl:Class>
     
 
@@ -1355,7 +1347,7 @@
     <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Kitchen -->
 
     <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Kitchen">
-        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Room"/>
+        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType"/>
     </owl:Class>
     
 
@@ -1578,7 +1570,7 @@
     <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#LivingRoom -->
 
     <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#LivingRoom">
-        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Room"/>
+        <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType"/>
     </owl:Class>
     
 
@@ -2402,6 +2394,17 @@
                 <owl:onClass rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#FloorLevel"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -2417,6 +2420,17 @@
                 <owl:onClass rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Structure"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -2425,6 +2439,14 @@
 
     <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomFeature">
         <rdfs:subClassOf rdf:resource="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#InteriorFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType -->
+
+    <owl:Class rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Quality"/>
     </owl:Class>
     
 
@@ -3309,14 +3331,6 @@
 
     <owl:NamedIndividual rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DistrictHeatingSystem">
         <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DivisionName -->
-
-    <owl:NamedIndividual rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DivisionName">
-        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
     </owl:NamedIndividual>
     
 
@@ -4249,6 +4263,14 @@
     
 
 
+    <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType -->
+
+    <owl:NamedIndividual rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Rural -->
 
     <owl:NamedIndividual rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Rural">
@@ -4782,9 +4804,6 @@
     <rdf:Description rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DistrictHeatingSystem">
         <rdfs:label xml:lang="en">DistrictHeatingSystem</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#DivisionName">
-        <rdfs:label xml:lang="en">DivisionName</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Document">
         <rdfs:label xml:lang="en">Document</rdfs:label>
     </rdf:Description>
@@ -5132,6 +5151,9 @@
     </rdf:Description>
     <rdf:Description rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomFeature">
         <rdfs:label xml:lang="en">RoomFeature</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#RoomType">
+        <rdfs:label xml:lang="en">RoomType</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="https://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.ttl#Rural">
         <rdfs:label xml:lang="en">Rural</rdfs:label>
