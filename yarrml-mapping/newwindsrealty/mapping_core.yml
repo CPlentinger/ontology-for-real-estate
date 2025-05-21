@@ -1,7 +1,7 @@
-base: http://example.com/#
+base: http://example.com/source2#
 
 prefixes:
-  ex: http://example.com/#
+  ex: http://example.com/source2#
   xsd: http://www.w3.org/2001/XMLSchema#
   re: http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf#
   gufo: http://purl.org/nemo/gufo#
@@ -40,7 +40,7 @@ mappings:
   Ontology:
     sources:
       - [ newwindsrealty.xml~xpath, / ]
-    s: <>
+    s: http://example.com/source2#
     po:
       - p: rdf:type
         o: owl:Ontology

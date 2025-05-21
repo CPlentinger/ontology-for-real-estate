@@ -7,7 +7,6 @@ namespace xsd_inference
     {
         static void Main(string[] args)
         {
-            // Get all files in the XML directory
             string[] files = Directory.GetFiles("XML", "*.xml");
             
             XmlWriterSettings settings = new XmlWriterSettings
