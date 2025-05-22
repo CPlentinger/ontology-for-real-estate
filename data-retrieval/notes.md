@@ -1,0 +1,1 @@
+npx comunica-sparql-file-http ..\yarrml-mapping\kefalonia\result.ttl ..\yarrml-mapping\newwindsrealty\result.ttl http://cplentinger.github.io/ontology-for-real-estate/operational-ontology/real-estate-listing.rdf
